@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Для Ани 💗</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Привет, Анечка 💫</h1>
+        <p id="message" class="fade-text">Нажми на кнопку ниже 🦋</p>
+        <img id="heroImage" class="hidden" src="" alt="Героиня">
+        <button id="showMessage">Показать пожелание</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Ань, хорошего тебе дня! ☀️",
+            "Ты чудесная и тёплая как лето 🌸",
+            "Улыбайся! Ты делаешь этот мир светлее 😊",
+            "Ты особенная 💖",
+            "Мейнер Кармиллы",
+            "Ты лучшая на Ванван"
+        ];
+
+        const images = {
+            "Кармиллы": "carmilla.jpg",
+            "Ванван": "wanwan.jpg"
+        };
+
+        let index = 0;
+        const messageEl = document.getElementById("message");
+        const imgEl = document.getElementById("heroImage");
+
+        document.getElementById("showMessage").addEventListener("click", () => {
+            index = (index + 1) % messages.length;
+            const text = messages[index];
+
+            // Анимация текста
+            messageEl.classList.remove("fade-text");
+            void messageEl.offsetWidth; // перезапуск анимации
+            messageEl.textContent = text;
+            messageEl.classList.add("fade-text");
+
+            // Логика картинок
+            if (text.includes("Кармиллы")) {
+                imgEl.src = "carmilla.jpg";
+                imgEl.classList.remove("hidden");
+            } else if (text.includes("Ванван")) {
+                imgEl.src = "wanwan.jpg";
+                imgEl.classList.remove("hidden");
+            } else {
+                imgEl.classList.add("hidden");
+            }
+        });
+    </script>
+</body>
+
+</html>
